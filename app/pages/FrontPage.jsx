@@ -5,7 +5,7 @@ var FrontPage = React.createClass({
 
     render: function() {
         return (
-            <h1>FrontPage!</h1>
+            <h1>front!</h1>
         );
     }
 });

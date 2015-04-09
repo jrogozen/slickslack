@@ -17,7 +17,6 @@ var AppTemplate = React.createClass({
                 <body>
                     <RouteHandler {...this.props}/>
                     {/* replace localhost in production */}
-                    <script src="http://localhost:8090/webpack-dev-server.js"></script>
                     <script src="http://localhost:8090/public/bundle.js"></script>
                     <script id="serializedFlux" type="application/json" dangerouslySetInnerHTML={{__html: this.props.serializedFlux}} />
                 </body>

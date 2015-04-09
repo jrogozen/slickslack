@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var path = require('path');
 
 var plugins = [
   // require 'react/addons' when we require 'react'
@@ -8,19 +9,31 @@ var plugins = [
 ];
 
 module.exports = {
-  entry: './app/AppRoutes.jsx',
-  output: {
-    filename: 'bundle.js',
-    publicPath: 'http://localhost:8090/public'
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   },
+
+  entry: [
+    'webpack-dev-server/client?http://localhost:8090',
+    'webpack/hot/dev-server',
+    './app/rehydrate.js'
+  ],
+
+  output: {
+    path: path.join(__dirname, '/public/'),
+    filename: 'bundle.js',
+    publicPath: 'http://localhost:8090/public/'
+  },
+
+  plugins: plugins,
+
   module: {
     loaders: [
       {
         test: /\.jsx$/,
-        loader: 'jsx-loader?insertPragma=React.DOM&harmony',
+        loaders: ['react-hot', 'jsx?harmony'],
         exclude: /node_modules/
       }
     ]
-  },
-  plugins: plugins
+  }
 };

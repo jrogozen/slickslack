@@ -4,9 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "",
-    "serve": "nodemon index.js",
-    "dev": "webpack-dev-server --progress --colors --port 8090",
+    "start": "NODE_ENV=development supervisor --ignore public/ -e js server & NODE_ENV=development node hotLoadServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -17,10 +15,14 @@
     "fluxxor": "^1.5.3",
     "jsonp": "^0.2.0",
     "jsx-loader": "^0.13.1",
+    "lodash": "^3.6.0",
     "node-jsx": "^0.12.4",
     "nodemon": "^1.3.7",
     "react": "^0.13.1",
+    "react-hot-loader": "^1.2.4",
     "react-router": "^0.13.2",
+    "supervisor": "^0.6.0",
+    "url": "^0.10.3",
     "webpack": "^1.8.2",
     "webpack-dev-middleware": "^1.0.11",
     "webpack-dev-server": "^1.8.0"
