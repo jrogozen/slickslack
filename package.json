@@ -1,0 +1,31 @@
+{
+  "name": "slickslack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "npm run serve | npm run dev",
+    "serve": "node index.js",
+    "dev": "webpack-dev-server --progress --colors --port 8090",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.3.1",
+    "express": "^4.12.3",
+    "fluxxor": "^1.5.3",
+    "jsonp": "^0.2.0",
+    "jsx-loader": "^0.13.1",
+    "node-jsx": "^0.12.4",
+    "react": "^0.13.1",
+    "react-router": "^0.13.2",
+    "webpack": "^1.8.2",
+    "webpack-dev-middleware": "^1.0.11",
+    "webpack-dev-server": "^1.8.0"
+  },
+  "devDependencies": {
+    "react": "^0.13.1",
+    "react-hot-loader": "^1.2.4"
+  }
+}
