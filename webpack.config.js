@@ -7,18 +7,8 @@ var plugins = [
   new webpack.NormalModuleReplacementPlugin(/^react$/, 'react/addons')
 ];
 
-if (process.env.NODE_ENV === "production") {
-  plugins.push(new webpack.optimize.UglifyJsPlugin());
-  plugins.push(new webpack.optimize.DedupePlugin());
-  plugins.push(new webpack.DefinePlugin({
-    "process.env": {
-      NODE_ENV: JSON.stringify("production")
-    }
-  }));
-}
-
 module.exports = {
-  entry: './app/index.jsx',
+  entry: './app/AppRoutes.jsx',
   output: {
     filename: 'bundle.js',
     publicPath: 'http://localhost:8090/public'
