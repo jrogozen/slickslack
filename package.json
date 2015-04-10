@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "NODE_ENV=development supervisor --ignore public/ -e js server & NODE_ENV=development node hotLoadServer.js",
+    "start": "NODE_ENV=development supervisor  -e js server & NODE_ENV=development node hotLoadServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
