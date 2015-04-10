@@ -7,7 +7,7 @@ var FrontPage = React.createClass({
     render: function() {
         return (
             <div>
-                <h1>front!</h1>
+                <h1>fronsst!</h1>
                 <Link to="PostPage">Posts</Link>
             </div>
         );

@@ -4,6 +4,7 @@ var _ = require('lodash');
 var AppActions = {
     serverRequestInit: function(initState, callback) {
         var AppStoreInitState = initState.AppStoreInitState || {};
+        this.dispatch(constants.SERVER_APP_INIT, AppStoreInitState);
         var asyncCallCount = 0;
         var finished;
 

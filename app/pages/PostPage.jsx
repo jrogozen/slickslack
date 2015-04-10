@@ -5,7 +5,7 @@ var PostPage = React.createClass({
 
     render: function() {
         return (
-            <h1>Posts</h1>
+            <h1>Posssts</h1>
         );
     }
 });

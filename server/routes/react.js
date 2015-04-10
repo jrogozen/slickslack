@@ -17,11 +17,14 @@ router.route('/*').get(function(req, res) {
         if (req.headers.host.match(/^www/) !== null) {
             res.redirect(302, 'http://' + req.headers.host.replace(/^www\./, '') + req.url);
         } else {
-            var HandlerElement, head;
+            var HandlerElement;
             var flux = FluxConstructor();
             var path = url.parse(req.url).pathname;
             var initState = {
                 // if stores need init data
+                AppStoreInitState: {
+                    server: process.env.NODE_ENV
+                }
             };
             flux.actions.AppActions.serverRequestInit(initState, function() {
                 var serializedFlux = flux.serialize();
@@ -47,15 +50,7 @@ router.route('/*').get(function(req, res) {
                     res.status(500);
                 }
 
-                var head = React.renderToString(Head({title: 'SlickSlack'}));
-                res.write('<html>');
-                res.write(head);
-                res.write('<body>');
-                res.write(markup);
-                res.write('<script src="http://localhost:8090/public/bundle.js" defer></script>');
-                res.write('</body>');
-                res.write('</html>');
-                res.end();
+                res.send(markup);
             });
         }
     } else {
