@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var config = require('./config');
 
 var plugins = [
   // require 'react/addons' when we require 'react'
@@ -14,7 +15,7 @@ module.exports = {
   },
 
   entry: [
-    'webpack-dev-server/client?http://localhost:8090',
+    'webpack-dev-server/client?http://localhost:' + config.server.webpackPort,
     'webpack/hot/dev-server',
     './app/rehydrate.js'
   ],
@@ -22,7 +23,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/public/'),
     filename: 'bundle.js',
-    publicPath: 'http://localhost:8090/public/'
+    publicPath: 'http://localhost:' + config.server.webpackPort' + '/public/'
   },
 
   plugins: plugins,

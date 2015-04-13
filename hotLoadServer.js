@@ -1,8 +1,9 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
+var serverConfig = require('./config');
 
-var port = 8090;
+var port = serverConfig.webpackPort;
 
 new WebpackDevServer(webpack(config), {
   contentBase: 'http://localhost:' + port,

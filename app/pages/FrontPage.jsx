@@ -8,7 +8,7 @@ var FrontPage = React.createClass({
         return (
             <div>
                 <h1>fronsst!</h1>
-                <Link to="PostPage">Posts</Link>
+                <Link to="WebhookPage">Posts</Link>
             </div>
         );
     }

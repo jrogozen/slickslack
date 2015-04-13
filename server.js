@@ -1,7 +1,9 @@
 var express = require('express');
 var routes = require('./server/routes');
 var server = express();
-var port = 8080;
+var config = require('./config');
+
+var port = config.server.serverPort;
 
 server.use(routes);
 

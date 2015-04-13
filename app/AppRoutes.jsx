@@ -5,12 +5,12 @@ var NotFoundRoute = Router.NotFoundRoute;
 
 var AppTemplate = require('./AppTemplate.jsx');
 var FrontPage = require('./pages/FrontPage.jsx');
-var PostPage = require('./pages/PostPage.jsx');
+var WebhookPage = require('./pages/WebhookPage.jsx');
 
 var AppRoutes = (
     <Route path='/' handler={AppTemplate}>
         <Route name='FrontPage' path='/' handler={FrontPage}/>
-        <Route name='PostPage' path='/post' handler={PostPage}/>
+        <Route name='WebhookPage' path='/webhook' handler={WebhookPage}/>
     </Route>
 );
 
