@@ -11,13 +11,14 @@ var plugins = [
 
 module.exports = {
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.scss']
   },
 
   entry: [
     'webpack-dev-server/client?http://localhost:' + config.server.webpackPort,
     'webpack/hot/dev-server',
-    './app/rehydrate.js'
+    './app/rehydrate.js',
+    './scss/main.scss'
   ],
 
   output: {
@@ -33,6 +34,11 @@ module.exports = {
       {
         test: /\.jsx$/,
         loaders: ['react-hot', 'jsx?harmony'],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass',
         exclude: /node_modules/
       }
     ]

@@ -1,5 +1,8 @@
+var path = require('path');
+
 var config = {
     server: {
+        root: path.resolve(__dirname, '..'),
         serverPort: process.env.SERVER_PORT || 8080,
         webpackPort: process.env.WEBPACK_PORT || 8090,
         apiTarget: 'http://localhost:8080',
