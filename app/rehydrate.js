@@ -16,7 +16,7 @@ if (typeof window !== 'undefined') {
         var serializedFlux = document.getElementById('serializedFlux').innerHTML;
         
         window.flux.hydrate(JSON.parse(serializedFlux));
-        
+        window.flux.actions.AppActions.clientOnLoad();
         Router.run(AppRoutes, Router.HistoryLocation, function(Handler, state) {
             var HandlerElement = React.createElement(Handler, {
                 flux: window.flux,

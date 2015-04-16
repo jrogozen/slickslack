@@ -13,6 +13,11 @@ var AppActions = {
         } else {
             _.after(asyncCallCount, callback);
         }
+    },
+
+    clientOnLoad: function() {
+        console.log('loading client scripts / css');
+        // this.flux.actions.AppActions.loadStylesheet('')
     }
 };
 

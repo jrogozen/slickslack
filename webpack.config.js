@@ -18,7 +18,7 @@ module.exports = {
     'webpack-dev-server/client?http://localhost:' + config.server.webpackPort,
     'webpack/hot/dev-server',
     './app/rehydrate.js',
-    './scss/main.scss'
+    // './scss/main.scss'
   ],
 
   output: {
