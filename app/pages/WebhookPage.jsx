@@ -7,7 +7,7 @@ var WebhookPage = React.createClass({
 
     getInitialState: function() {
         return {
-            webook: 'https://hooks.slack.com/services/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',
+            webhook: 'https://hooks.slack.com/services/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',
             name: '',
             text: '',
             avatar: ''
@@ -15,19 +15,19 @@ var WebhookPage = React.createClass({
     },
 
     webhook: function() {
+        var body = {
+            text: this.state.text,
+            username: this.state.name
+        };
+
+        body = JSON.stringify(body)
         request.post(this.state.webhook)
-            .send({
-                text: this.state.text,
-                username: this.state.name,
-                icon_url: this.state.avatar
-            })
+            .type('form')
+            .send(body)
             .end(function() {
                 console.log('request sent!');
             })
     },
-
-
-    // curl -X POST --data-urlencode 'payload={"text": "This is posted to <#general> and comes from *monkey-bot*.", "channel": "#general", "username": "monkey-bot", "icon_emoji": ":monkey_face:"}' https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
 
     handleSubmit: function(e) {
         console.log('submitting!');
@@ -42,8 +42,8 @@ var WebhookPage = React.createClass({
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>Webhook API</label>
-                        <input type="text" className="form-control" defaultValue={this.state.webook} valueLink={this.linkState('webhook')} />
-                    </div>
+                        <input type="text" className="form-control" defaultValue={this.state.webhook} valueLink={this.linkState('webhook')} />
+                    </div> 
                     <div className="form-group">
                         <label>Name</label>
                         <input type="text" className="form-control" valueLink={this.linkState('name')} />

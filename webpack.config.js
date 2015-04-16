@@ -18,7 +18,7 @@ module.exports = {
     'webpack-dev-server/client?http://localhost:' + config.server.webpackPort,
     'webpack/hot/dev-server',
     './app/rehydrate.js',
-    // './scss/main.scss'
+    './scss/main.scss'
   ],
 
   output: {
@@ -26,6 +26,13 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: 'http://localhost:' + config.server.webpackPort + '/public/'
   },
+
+  node: {
+        fs: "empty",
+        net: "empty",
+        tls: "empty",
+        console: true
+    },
 
   plugins: plugins,
 
@@ -40,6 +47,10 @@ module.exports = {
         test: /\.scss$/,
         loader: 'style!css!sass',
         exclude: /node_modules/
+      },
+      {
+          test: /\.json$/,
+          loader: 'json-loader'
       }
     ]
   }

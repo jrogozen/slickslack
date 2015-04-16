@@ -5,6 +5,8 @@ var config = require('./config');
 
 var port = config.server.serverPort;
 
+require('./server/middleware/common')(server);
+
 server.use(routes);
 
 server.listen(port, function() {
