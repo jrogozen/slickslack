@@ -2,56 +2,74 @@ var webpack = require('webpack');
 var path = require('path');
 var config = require('./config');
 
-var plugins = [
-  // require 'react/addons' when we require 'react'
-  new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoErrorsPlugin(),
-  new webpack.NormalModuleReplacementPlugin(/^react$/, 'react/addons')
-];
-
 module.exports = {
-  resolve: {
-    extensions: ['', '.js', '.jsx', '.scss']
-  },
+    target: 'web',
+    cache: true,
+    debug: true,
+    context: __dirname,
+    devtool: "eval",
 
-  entry: [
-    'webpack-dev-server/client?http://localhost:' + config.server.webpackPort,
-    'webpack/hot/dev-server',
-    './app/rehydrate.js',
-    './scss/main.scss'
-  ],
+    resolve: {
+        modulesDirectories: [
+            "app",
+            "node_modules"
+        ],
+        extensions: ['', '.js', '.jsx']
+    },
 
-  output: {
-    path: path.join(__dirname, '/public/'),
-    filename: 'bundle.js',
-    publicPath: 'http://localhost:' + config.server.webpackPort + '/public/'
-  },
+    entry: [
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
+        './app/rehydrate.js',
+    ],
 
-  node: {
+    output: {
+        path: path.join(__dirname, '/public/'),
+        filename: 'client.js',
+        chunkFilename: '[name].[id].js',
+        hotUpdateChunkFilename: 'update/[hash]/[id].update.js',
+        hotUpdateMainFilename: 'update/[hash]/update.json',
+        publicPath: 'http://localhost:8080/public/'
+    },
+
+    node: {
+        __dirname: true,
         fs: "empty",
         net: "empty",
         tls: "empty",
         console: true
     },
 
-  plugins: plugins,
+    plugins: [
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin(),
+        new webpack.NormalModuleReplacementPlugin(/^react$/, 'react/addons')
+    ],
 
-  module: {
-    loaders: [
-      {
-        test: /\.jsx$/,
-        loaders: ['react-hot', 'jsx?harmony'],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.scss$/,
-        loader: 'style!css!sass',
-        exclude: /node_modules/
-      },
-      {
-          test: /\.json$/,
-          loader: 'json-loader'
-      }
-    ]
-  }
+    module: {
+        loaders: [{
+            include: /\.json$/,
+            loaders: ["json-loader"]
+        }, {
+            include: /\.jsx$/,
+            loaders: ["react-hot", "babel-loader"],
+            exclude: /node_modules/
+        }]
+    },
+
+    devServer: {
+        publicPath: "http://localhost:8080/public/",
+        contentBase: "./public",
+        hot: true,
+        inline: true,
+        lazy: false,
+        quiet: true,
+        noInfo: false,
+        stats: {
+            colors: true
+        }
+    }
 };

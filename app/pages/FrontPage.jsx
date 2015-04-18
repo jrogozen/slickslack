@@ -7,7 +7,7 @@ var FrontPage = React.createClass({
     render: function() {
         return (
             <div>
-                <h1>NICK J. COOL?? FIND OUT AT 11!</h1>
+                <h1>NICK Js. COOL?? FIND OUT AT 11!</h1>
                 <Link to="WebhookPage">WEBHOOKS</Link>
             </div>
         );
