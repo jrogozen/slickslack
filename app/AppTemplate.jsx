@@ -17,8 +17,7 @@ var AppTemplate = React.createClass({
         };
     },
     render: function() {
-        var server = this.state.AppStoreState.server;
-
+        var env = this.state.AppStoreState.env;
         return (
             <html>
             <head lang="en">
@@ -33,9 +32,10 @@ var AppTemplate = React.createClass({
             </head>
             <body>
                 <RouteHandler {...this.props}/>
+                <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
                 <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-                <script async type="text/javascript" src={server === 'development' ? "http://localhost:" + config.server.webpackPort + "/public/client.js" : "/bundle.js"}></script>
+                <script async type="text/javascript" src={env === 'development' ? "http://localhost:" + config.server.webpackPort + "/public/client.js" : "/bundle.js"}></script>
                 <script id="serializedFlux" type="application/json" dangerouslySetInnerHTML={{__html: this.props.serializedFlux}} />
             </body>
             </html>

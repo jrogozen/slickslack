@@ -6,6 +6,7 @@ var config = {
         serverPort: process.env.SERVER_PORT || 3000,
         webpackPort: process.env.WEBPACK_PORT || 8080,
         apiTarget: 'http://localhost:8080',
+        path: 'http://localhost:3000',
         dbTarget: ''
     },
     app: {

@@ -6,7 +6,7 @@ var React = require('react');
 var Router = require('react-router');
 var AppRoutes = require('../../app/AppRoutes.jsx');
 var FluxConstructor = require('../../app/FluxConstructor');
-
+var config = require('../../config');
 var Head = React.createFactory(require('../../app/modules/Head.jsx'));
 var express = require('express');
 var router = express.Router();
@@ -23,7 +23,8 @@ router.route('/*').get(function(req, res) {
             var initState = {
                 // if stores need init data
                 AppStoreInitState: {
-                    server: process.env.NODE_ENV
+                    serverPath: config.server.path,
+                    env: process.env.NODE_ENV
                 }
             };
             flux.actions.AppActions.serverRequestInit(initState, function() {

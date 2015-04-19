@@ -16,8 +16,22 @@ var AppActions = {
     },
 
     clientOnLoad: function() {
-        console.log('loading client scripts / css');
-        // this.flux.actions.AppActions.loadStylesheet('')
+        this.flux.actions.AppActions.loadSocketIo();
+    },
+
+    loadSocketIo: function() {
+        if (window && !window.io) {
+            // var script = document.createElement('script');
+            // script.src = "";
+            // document.body.appendChild(script);
+
+            
+            script.onload = script.onreadystatechange = function() {
+                // this.dispatch(constants.SOCKET_IO_INIT_SUCCESS);
+                console.log('socket io loaded');
+            }.bind(this);
+        }  
+
     }
 };
 

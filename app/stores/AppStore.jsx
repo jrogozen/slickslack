@@ -4,7 +4,11 @@ var constants = require('../constants/Constants.js');
 var AppStore = Fluxxor.createStore({
     initialize: function() {
         this.state = {
-            server: null
+            env: null,
+            serverPath: null
+            // scripts: {
+            //     socketIo: false
+            // }
         };
 
         this.bindActions(
@@ -12,7 +16,8 @@ var AppStore = Fluxxor.createStore({
         );
     },
     loadServerInitState: function(init) {
-        this.state.server = init.server;
+        this.state.env = init.env;
+        this.state.serverPath = init.serverPath;
     },
     serialize: function() {
         return JSON.stringify(this.state);
