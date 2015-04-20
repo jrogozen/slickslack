@@ -42,11 +42,9 @@ module.exports = {
 
     plugins: [
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
-        new webpack.NormalModuleReplacementPlugin(/^react$/, 'react/addons')
+        new webpack.NormalModuleReplacementPlugin(/^react$/, 'react/addons'),
     ],
 
     module: {
@@ -57,6 +55,9 @@ module.exports = {
             include: /\.jsx$/,
             loaders: ["react-hot", "babel-loader"],
             exclude: /node_modules/
+        }, {
+            test: /\.(otf|eot|svg|ttf|woff)/,
+            loader: 'url-loader?limit=8192'
         }]
     },
 

@@ -21,7 +21,7 @@ var AppTemplate = React.createClass({
         return (
             <html>
             <head lang="en">
-                <title> HotPads - The place to find your place </title>
+                <title> SlickSlack! </title>
                 <meta charSet="UTF-8" />
                 <meta httpEquiv="Content-type" content="text/html; charset=iso-8859-1"/>
                 <meta httpEquiv="Content-Language" content="en-us"/>
@@ -29,6 +29,7 @@ var AppTemplate = React.createClass({
                 <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimal-ui"/>
                 <meta name="apple-mobile-web-app-capable" content="yes"/>
                 <meta name="mobile-web-app-capable" content="yes"/>
+                <link rel="stylesheet" href="./app.css" />
             </head>
             <body>
                 <RouteHandler {...this.props}/>

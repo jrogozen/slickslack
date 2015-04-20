@@ -10,8 +10,7 @@ var io = require('socket.io').listen(server);
 
 io.on('connection', function(socket) {
     socket.on('init', function(data) {
-        console.log('received emit');
-        socket.emit('init:response', {
+        socket.broadcast.emit('init:response', {
             name: data.name
         });
     });
@@ -20,6 +19,8 @@ io.on('connection', function(socket) {
 require('./server/middleware/common')(app);
 
 app.use(routes);
+
+app.use(express.static('public'));
 
 server.listen(port, function() {
     console.log('express server listening on port:', port);

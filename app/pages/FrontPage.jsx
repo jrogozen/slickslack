@@ -25,6 +25,7 @@ var FrontPage = React.createClass({
         socket.emit('init', {
             name: 'jon'
         });
+        
         socket.on('init:response', function(data) {
             console.log(data);
         })
